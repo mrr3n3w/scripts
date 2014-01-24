@@ -1,0 +1,8 @@
+#!/bin/bash
+
+shell=`echo $0`
+if [ $shell == "-bash" ]; then
+   source .bashrc
+elif [ $shell == "sh" ]; then
+     . ./.shrc
+fi

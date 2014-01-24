@@ -1,0 +1,12 @@
+#!/bin/sh
+for arg in $*
+do
+	cp "$arg" /home/oksun7/cosc/akennedy/student/$LOGNAME
+        if [ $? -eq 0 ]
+        then
+            setfacl -m user:akennedy:rwx,mask:rwx /home/oksun7/cosc/akennedy/student/$LOGNAME/$arg
+            date >> /home/oksun7/cosc/akennedy/student/$LOGNAME/.submitlog
+            echo $arg >> /home/oksun7/cosc/akennedy/student/$LOGNAME/.submitlog
+            echo $arg "submitted"
+        fi
+done

@@ -1,0 +1,56 @@
+#!/bin/bash
+USERS=$(echo `users | tr ' ' '\n' | sort -u | wc -l`)
+LOCATION=$(echo `last $USER | head -5 | tail -1 | cut -d ' ' -f14 | cut -d '.' -f1`)
+if [ $LOCATION -eq 10 2> /dev/null ]; then 
+    LOCATION="Inside Desktop"
+elif [ $LOCATION -eq 142 2> /dev/null ]; then
+    LOCATION="Inside WIFI"
+else
+    LOCATION="Outside"
+fi
+#end location check
+
+if [ $USERS -gt 5 ]; then
+    LIST=`users | tr -s ' ' '\n' | sort -u | head -5`
+else
+    LIST=`users | tr -s ' ' '\n' | sort -u`
+fi
+#end users check
+
+if [ `date '+TIME:%H:%M:%S' | cut -d ':' -f2` -lt 12 ]; then
+    echo "Good Morning, $USER"
+    echo "===================="
+    echo
+    echo "Current Users online:"
+    echo "$LIST"
+    echo
+    echo "And $(echo `expr $USERS - 5`) more"
+    echo "Total of $USERS users online" 
+    echo "Current date & time: $(echo `date`)"
+    echo "Last login for $USER was: $(echo `last $USER | head -5 | tail -1 | cut -d ' ' -f15-20`) from $LOCATION"
+    echo
+elif [ `date '+TIME:%H:%M:%S' | cut -d ':' -f2` -lt 17 ]; then
+    echo "Good Afternoon, $USER"
+    echo "======================"
+    echo
+    echo "Current Users online:"
+    echo "$LIST"
+    echo
+    echo "And $(echo `expr $USERS - 5`) more"
+    echo "Total of $USERS users online"
+    echo "Current date & time: $(echo `date`)"
+    echo "Last login for $USER was: $(echo `last $USER | head -5 | tail -1 | cut -d ' ' -f15-20`) from $LOCATION"
+    echo
+elif [ `date '+TIME:%H:%M:%S' | cut -d ':' -f2` -gt 17 ]; then 
+    echo "Good Evening, $USER"
+    echo "===================="
+    echo
+    echo "Current Users online:"
+    echo "$LIST"
+    echo
+    echo "And $(echo `expr $USERS - 5`) more"
+    echo "Total of $USERS users online"
+    echo "Current date & time: $(echo `date`)"
+    echo "Last login for $USER was: $(echo `last $USER | head -5 | tail  -1 | cut -d ' ' -f15-20`) from $LOCATION"
+    echo
+fi

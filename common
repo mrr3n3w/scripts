@@ -1,0 +1,5 @@
+#!/bin/bash
+history | grep -v "./" | sort -nr | nl |  head -10
+
+
+
