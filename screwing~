@@ -1,0 +1,6 @@
+#!/bin/sh
+/usr/bin/osascript
+activate application "iTerm"
+tell application "System Events"
+    keystroke "t" using {command down}
+end tell

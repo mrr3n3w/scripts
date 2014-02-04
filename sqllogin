@@ -1,0 +1,2 @@
+#!/bin/bash
+sqlplus rn_jrow@sci254_ssh

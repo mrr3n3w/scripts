@@ -2,7 +2,7 @@
 
 shell=`echo $0`
 if [ $shell == "-bash" ]; then
-   source .bashrc
+   source ~/.bashrc
 elif [ $shell == "sh" ]; then
-     . ./.shrc
+     . ~/.shrc
 fi

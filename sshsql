@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -L 9999:10.1.144.5:5555 jrowe@oksun7.okanagan.bc.ca
